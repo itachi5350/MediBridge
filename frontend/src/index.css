@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-kabel {
+  font-family: 'Trebuchet MS', 'Gill Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.letter-hover span {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.letter-hover span:hover {
+  transform: scale(1.4) translateY(-6px);
+}
