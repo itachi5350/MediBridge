@@ -14,7 +14,7 @@ def ping_gemini():
     try:
         client = get_client()
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-3.1-flash-lite",
             contents="Say ok"
         )
         return bool(response.text)
@@ -25,7 +25,7 @@ def ping_gemini():
 def call_gemini(prompt: str) -> str:
     client = get_client()
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3.1-flash-lite",
         contents=prompt
     )
     return response.text

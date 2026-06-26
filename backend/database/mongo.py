@@ -24,3 +24,21 @@ def ping_db():
         return True
     except ConnectionFailure:
         return False
+
+def save_query(session_id: str, language: str, input_text: str, result: dict):
+    db = get_db()
+    db.queries.insert_one({
+        "session_id": session_id,
+        "language": language,
+        "input": input_text,
+        "result": result,
+        "timestamp": __import__("datetime").datetime.utcnow().isoformat()
+    })
+
+def get_history(session_id: str):
+    db = get_db()
+    records = db.queries.find(
+        {"session_id": session_id},
+        {"_id": 0}
+    ).sort("timestamp", -1).limit(10)
+    return list(records)

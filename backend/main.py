@@ -8,6 +8,9 @@ from services.gemini_service import ping_gemini
 from routes.lang_routes import router as languages_router
 from routes.test import router as test_router
 from routes.analyze import router as analyze_router
+from routes.history import router as history_router
+from routes.profile import router as profile_router
+
 load_dotenv()
 
 app = FastAPI(title="MediBridge API")
@@ -22,6 +25,9 @@ app.add_middleware(
 app.include_router(languages_router, prefix="/api")
 app.include_router(test_router, prefix="/api")
 app.include_router(analyze_router, prefix="/api")
+app.include_router(history_router, prefix="/api")
+app.include_router(profile_router, prefix="/api")
+
 @app.on_event("startup")
 async def startup():
     print("\n── MediBridge startup ──")
