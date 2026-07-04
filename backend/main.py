@@ -10,7 +10,7 @@ from routes.test import router as test_router
 from routes.analyze import router as analyze_router
 from routes.history import router as history_router
 from routes.profile import router as profile_router
-
+from routes.reports_reader import router as report_router
 load_dotenv()
 
 app = FastAPI(title="MediBridge API")
@@ -27,7 +27,7 @@ app.include_router(test_router, prefix="/api")
 app.include_router(analyze_router, prefix="/api")
 app.include_router(history_router, prefix="/api")
 app.include_router(profile_router, prefix="/api")
-
+app.include_router(report_router, prefix="/api")
 @app.on_event("startup")
 async def startup():
     print("\n── MediBridge startup ──")
